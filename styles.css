@@ -72,11 +72,17 @@ h2:after {
 
 /* Speakers – cards */
 .speakers {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 2rem;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0;
 }
 .speaker-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
     background:white;
     border-radius:12px;
     overflow:hidden;
