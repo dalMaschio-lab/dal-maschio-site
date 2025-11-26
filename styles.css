@@ -109,7 +109,7 @@ h2:after {
     display:flex;
     justify-content:center;
     margin-bottom:40px;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
     gap:10px;
     border-bottom:1px solid #ddd;
 }
@@ -186,3 +186,18 @@ footer {
     text-align:center;
 }
 footer a { color:white; text-decoration:underline; }
+
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+    nav ul {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+}
