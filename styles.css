@@ -4,13 +4,35 @@ body { margin:0; font-family:'Segoe UI',Arial,sans-serif; line-height:1.6; color
 .container { max-width:1100px; margin:0 auto; padding:0 15px; }
 
 /* Header – red gradient */
-header {
+.header-layout {
+    padding-left: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
     background: linear-gradient(to right, rgb(155,0,20), rgb(180,20,40));
-    color:white;
-    padding:100px 0;
-    text-align:center;
+    color: white;
 }
-header .logo { width: 50%;  vertical-align:middle; }
+
+.header-left {
+    flex: 1;
+    max-width: 60%;
+}
+
+.header-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 2rem;
+    margin:30px;
+    justify-items: left;
+}
+
+header .logo {
+    width: auto;
+    max-height: 150px; /* Adjust as needed */
+}
 .conference-title { font-size:42px; margin-bottom:20px; }
 .conference-date { font-size:24px; margin-bottom:30px; font-weight:300; }
 
@@ -24,6 +46,7 @@ header .logo { width: 50%;  vertical-align:middle; }
     font-weight:600;
     transition:all .3s;
     display:inline-block;
+    margin-bottom:30px;
 }
 .btn:hover { background:rgb(155,0,20); transform:translateY(-3px); box-shadow:0 4px 12px rgba(155,0,20,0.3); }
 
@@ -205,5 +228,13 @@ footer a { color:white; text-decoration:underline; }
         flex-wrap: nowrap;
         overflow-x: auto;
         justify-content: flex-start;
+    }
+    .header-layout {
+            flex-direction: column;
+            text-align: center;
+        }
+    .header-right {
+        justify-content: center;
+        margin-top: 20px;
     }
 }
