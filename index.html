@@ -37,38 +37,9 @@
     </section>
 
     <section id="speakers">
-        <h2>Keynote Speakers</h2>
-        <div class="speakers">
-            <div class="speaker-card">
-                <img src="speaker1.jpg" alt="Dr. Maria González">
-                <div class="speaker-info">
-                    <h3>Dr. Maria González</h3>
-                    <p>MIT • Topological Quantum Matter</p>
-                </div>
-            </div>
-            <div class="speaker-card">
-                <img src="speaker2.jpg" alt="Prof. Li Wei">
-                <div class="speaker-info">
-                    <h3>Prof. Li Wei</h3>
-                    <p>Tsinghua University • 2D Materials</p>
-                </div>
-            </div>
-            <div class="speaker-card">
-                <img src="speaker3.jpg" alt="Dr. James Carter">
-                <div class="speaker-info">
-                    <h3>Dr. James Carter</h3>
-                    <p>Max Planck Institute • Quantum Devices</p>
-                </div>
-            </div>
-            <div class="speaker-card">
-                <img src="speaker4.jpg" alt="Prof. Aisha Rahman">
-                <div class="speaker-info">
-                    <h3>Prof. Aisha Rahman</h3>
-                    <p>Stanford • Strongly Correlated Systems</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <h2>Keynote Speakers</h2>
+            <div class="speakers"></div>
+        </section>
 
     <section id="program">
         <h2>Program</h2>
@@ -85,10 +56,9 @@
                 <p>The symposium will take place in the department building, easily reachable by public transport.</p>
             </div>
             <div class="venue-img">
-                <img src="venue.jpg" alt="University of Padova">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2801.057!2d11.871256815722656!3d45.408472239102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda5a91a3d4d5%3A0x9231e8446f3f8b67!2sVia%20Ugo%20Bassi%2C%2058%2FB%2C%2035131%20Padova%20PD%2C%20Italy!5e0!3m2!1sen!2sus!4v1701199999!5m2!1sen!2sus" width="100%" height="400" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2801.057!2d11.871256815722656!3d45.408472239102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda5a91a3d4d5%3A0x9231e8446f3f8b67!2sVia%20Ugo%20Bassi%2C%2058%2FB%2C%2035131%20Padova%20PD%2C%20Italy!5e0!3m2!1sen!2sus!4v1701199999!5m2!1sen!2sus" width="100%" height="400" allowfullscreen="" loading="lazy"></iframe>
     </section>
 </main>
 
@@ -97,71 +67,7 @@
     <p><a href="#">Privacy Policy</a> • <a href="#">Code of Conduct</a></p>
 </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const tabsContainer = document.querySelector('.tabs');
-    const programSection = document.querySelector('#program');
-
-    fetch('program.csv')
-        .then(r => r.text())
-        .then(text => {
-            const rows = text.trim().split('\n')
-                .map(line => line.split(',').map(c => c.trim().replace(/^"|"$/g, '')));
-
-            const header = rows.shift(); // remove header
-            const days = [...new Set(rows.map(r => r[0]))].sort();
-
-            // Clear existing tabs and content
-            tabsContainer.innerHTML = '';
-            document.querySelectorAll('.tab-content').forEach(el => el.remove());
-
-            days.forEach((dayId, index) => {
-                // Create tab button
-                const date = new Date('2026-06-15');
-                date.setDate(15 + index);
-                const label = date.toLocaleDateString('en', { weekday: 'long', day: 'numeric' });
-
-                const btn = document.createElement('button');
-                btn.className = 'tab';
-                btn.textContent = label;
-                btn.dataset.day = dayId;
-                if (index === 0) btn.classList.add('active');
-                tabsContainer.appendChild(btn);
-
-                // Create content div
-                const content = document.createElement('div');
-                content.className = 'tab-content';
-                content.id = dayId;
-                if (index === 0) content.classList.add('active');
-                programSection.appendChild(content);
-
-                // Fill events for this day
-                rows.forEach(row => {
-                    if (row[0] === dayId) {
-                        const [_, time, event] = row;
-                        const item = document.createElement('div');
-                        item.className = 'schedule-item';
-                        item.innerHTML = `
-                            <div class="time">${time}</div>
-                            <div class="event-details">${event}</div>
-                        `;
-                        content.appendChild(item);
-                    }
-                });
-            });
-
-            // Re-attach tab switching
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                    tab.classList.add('active');
-                    document.getElementById(tab.dataset.day).classList.add('active');
-                });
-            });
-        });
-});
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
