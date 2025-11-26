@@ -73,78 +73,6 @@
     <section id="program">
         <h2>Program</h2>
         <div class="tabs">
-            <button class="tab active" data-day="day1">Monday 15</button>
-            <button class="tab" data-day="day2">Tuesday 16</button>
-            <button class="tab" data-day="day3">Wednesday 17</button>
-            <button class="tab" data-day="day4">Thursday 18</button>
-        </div>
-        <div class="tab-content active" id="day1">
-            <div class="schedule-item">
-                <div class="time">09:00–10:30</div>
-                <div class="event-details">Registration</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">11:00–12:30</div>
-                <div class="event-details">Opening</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">14:00–15:30</div>
-                <div class="event-details">Keynote: Carter</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">16:00–18:00</div>
-                <div class="event-details">Welcome Reception</div>
-            </div>
-        </div>
-        <div class="tab-content" id="day2">
-            <div class="schedule-item">
-                <div class="time">09:00–10:30</div>
-                <div class="event-details">Keynote: González</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">11:00–12:30</div>
-                <div class="event-details">Sessions A</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">14:00–15:30</div>
-                <div class="event-details">Poster Session</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">16:00–18:00</div>
-                <div class="event-details">Industry Panel</div>
-            </div>
-        </div>
-        <div class="tab-content" id="day3">
-            <div class="schedule-item">
-                <div class="time">09:00–10:30</div>
-                <div class="event-details">Keynote: Wei</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">11:00–12:30</div>
-                <div class="event-details">Sessions B</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">14:00–15:30</div>
-                <div class="event-details">Sessions C</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">16:00–18:00</div>
-                <div class="event-details">Excursion</div>
-            </div>
-        </div>
-        <div class="tab-content" id="day4">
-            <div class="schedule-item">
-                <div class="time">09:00–10:30</div>
-                <div class="event-details">Keynote: Rahman</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">11:00–12:30</div>
-                <div class="event-details">Closing Keynote</div>
-            </div>
-            <div class="schedule-item">
-                <div class="time">14:00–15:30</div>
-                <div class="event-details">Farewell</div>
-            </div>
         </div>
     </section>
 
@@ -170,18 +98,69 @@
 </footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const tabs = document.querySelectorAll('.tab');
-        const contents = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                contents.forEach(c => c.classList.remove('active'));
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.day).classList.add('active');
+document.addEventListener('DOMContentLoaded', () => {
+    const tabsContainer = document.querySelector('.tabs');
+    const programSection = document.querySelector('#program');
+
+    fetch('program.csv')
+        .then(r => r.text())
+        .then(text => {
+            const rows = text.trim().split('\n')
+                .map(line => line.split(',').map(c => c.trim().replace(/^"|"$/g, '')));
+
+            const header = rows.shift(); // remove header
+            const days = [...new Set(rows.map(r => r[0]))].sort();
+
+            // Clear existing tabs and content
+            tabsContainer.innerHTML = '';
+            document.querySelectorAll('.tab-content').forEach(el => el.remove());
+
+            days.forEach((dayId, index) => {
+                // Create tab button
+                const date = new Date('2026-06-15');
+                date.setDate(15 + index);
+                const label = date.toLocaleDateString('en', { weekday: 'long', day: 'numeric' });
+
+                const btn = document.createElement('button');
+                btn.className = 'tab';
+                btn.textContent = label;
+                btn.dataset.day = dayId;
+                if (index === 0) btn.classList.add('active');
+                tabsContainer.appendChild(btn);
+
+                // Create content div
+                const content = document.createElement('div');
+                content.className = 'tab-content';
+                content.id = dayId;
+                if (index === 0) content.classList.add('active');
+                programSection.appendChild(content);
+
+                // Fill events for this day
+                rows.forEach(row => {
+                    if (row[0] === dayId) {
+                        const [_, time, event] = row;
+                        const item = document.createElement('div');
+                        item.className = 'schedule-item';
+                        item.innerHTML = `
+                            <div class="time">${time}</div>
+                            <div class="event-details">${event}</div>
+                        `;
+                        content.appendChild(item);
+                    }
+                });
+            });
+
+            // Re-attach tab switching
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.getElementById(tab.dataset.day).classList.add('active');
+                });
             });
         });
-    });
+});
 </script>
 
 </body>

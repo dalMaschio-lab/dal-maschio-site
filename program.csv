@@ -1,0 +1,16 @@
+day,time,event
+day1,09:00–10:30,Registration
+day1,11:00–12:30,Opening
+day1,14:00–15:30,"Keynote: Dr. James Carter"
+day1,16:00–18:00,Welcome Reception
+day2,09:00–10:30,"Keynote: Dr. Maria González"
+day2,11:00–12:30,Sessions A
+day2,14:00–15:30,Poster Session
+day2,16:00–18:00,Industry Panel
+day3,09:00–10:30,"Keynote: Prof. Li Wei"
+day3,11:00–12:30,Sessions B
+day3,14:00–15:30,Sessions C
+day3,16:00–18:00,Excursion
+day4,09:00–10:30,"Keynote: Prof. Aisha Rahman"
+day4,11:00–12:30,Closing Keynote
+day4,14:00–15:30,Farewell
