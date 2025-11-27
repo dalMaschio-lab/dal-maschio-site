@@ -17,7 +17,6 @@ body { margin:0; font-family:'Segoe UI',Arial,sans-serif; line-height:1.6; color
     text-align: left;
     max-width: 60%;
     padding-left: 5rem;
-
 }
 
 .header-right {
@@ -31,9 +30,9 @@ body { margin:0; font-family:'Segoe UI',Arial,sans-serif; line-height:1.6; color
 }
 
 header .logo {
-	max-height: 8rem;
-	width: auto;
-	float: right;
+    max-height: 8rem;
+    width: auto;
+    float: right;
 }
 
 .conference-title { font-size:42px; margin-bottom:20px; }
@@ -233,15 +232,23 @@ footer a { color:white; text-decoration:underline; }
         justify-content: flex-start;
     }
     .header-layout {
-            flex-direction: column;
-            text-align: center;
-        }
+        flex-direction: column;
+        text-align: center;
+    }
     .header-right {
+        display: flex;
         justify-content: flex-start;
         margin-top: 20px;
         flex-direction: row;
         flex-wrap: nowrap;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
+    }
+    .header-right a {
+        overflow:hidden;
+    }
+    header .logo {
+        min-height: 8rem;
+        overflow:hidden;
     }
 }
