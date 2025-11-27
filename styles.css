@@ -209,6 +209,21 @@ h2:after {
     background:#ddd;
 }
 
+.sponsors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    justify-content: center;
+    gap: 2rem;
+    scroll-snap-type: x mandatory;
+    padding: 2rem 0;
+}
+
+.sponsors a img {
+    height: 8rem;
+}
+
 /* Footer */
 footer {
     background:rgb(155,0,20);
@@ -234,21 +249,24 @@ footer a { color:white; text-decoration:underline; }
     .header-layout {
         flex-direction: column;
         text-align: center;
-    }
+        align-items: stretch;
+    }/*
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }*/
     .header-right {
+        /*animation: scroll 1s linear infinite; /* Matches JS */
         display: flex;
         justify-content: flex-start;
-        margin-top: 20px;
+        margin: 2rem 5rem;
         flex-direction: row;
         flex-wrap: nowrap;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
     }
-    .header-right a {
-        overflow:hidden;
-    }
     header .logo {
         min-height: 8rem;
-        overflow:hidden;
+        float: none;
     }
 }
