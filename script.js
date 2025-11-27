@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(r => r.text())
         .then(text => {
             const rows = text.trim().split('\n')
-                .map(line => line.split(',').map(c => c.trim().replace(/^"|"$/g, '')));
+                .map(line => line.split('\t'));
 
             const header = rows.shift(); // remove header
             const days = [...new Set(rows.map(r => r[0]))].sort();
@@ -68,20 +68,21 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(r => r.text())
             .then(text => {
                 const rows = text.trim().split('\n')
-                    .map(line => line.split(',').map(c => c.trim().replace(/^"|"$/g, '')));
+                    .map(line => line.split('\t').map(c => c.trim().replace(/^"|"$/g, '')));
 
                 const header = rows.shift(); // remove header: name,title,association,image
 
                 rows.forEach(row => {
-                    const [name, title, association, image] = row;
+                    const [name, image, ...associations] = row;
                     const imgSrc = image ? image : 'default.svg';
+                    const paragraphs = associations.join(' • ');
                     const card = document.createElement('div');
                     card.className = 'speaker-card';
                     card.innerHTML = `
                         <img src="${imgSrc}" alt="${name}">
                         <div class="speaker-info">
                             <h3>${name}</h3>
-                            <p>${association} • ${title}</p>
+                            <p>${paragraphs}</p>
                         </div>
                     `;
                     speakersContainer.appendChild(card);

@@ -26,7 +26,7 @@ body { margin:0; font-family:'Segoe UI',Arial,sans-serif; line-height:1.6; color
     flex-direction: column;
     gap: 2rem;
     margin:30px;
-    justify-items: left;
+    align-items: left;
 }
 
 header .logo {
@@ -234,7 +234,11 @@ footer a { color:white; text-decoration:underline; }
             text-align: center;
         }
     .header-right {
-        justify-content: center;
+        justify-content: flex-start;
         margin-top: 20px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
     }
 }

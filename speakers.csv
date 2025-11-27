@@ -1,5 +1,10 @@
-name,title,association,image
-Dr. James Carter,Quantum Devices,Max Planck Institute,
-Dr. Maria González,Topological Quantum Matter,MIT,
-Prof. Li Wei,2D Materials,Tsinghua University,
-Prof. Aisha Rahman,Strongly Correlated Systems,Stanford,
+name	image	association
+Tommaso Fellin	media/fellin.jpeg	Neuroscience and Brain Technologies, Italian Institute of Technologies, Genua (IT)
+Fabio Benfenati	media/benfenati.jpeg	Synatpic Neuroscience and Technologies Italian Institute of Technologies	IRCCS Ospedale Policlinico San Martino, Genua (IT)
+Fiorenzo Conti	media/conti.jpeg	Department of Experimental and Clinical Medicine, Section of Physiology Università Politecnica delle Marche, Ancona, Italy	European Brain Research Institute, Monterotondo, (IT)
+Massimo Mantegazza	media/mante.jpeg	Institute of Molecular and Cellular Pharmacology, University Cote d'Azur, CNRS & Inserm; France
+Tommaso Pizzorusso	media/pizzorusso.png	Scuola Normale Superiore, Pisa, Italy	Institute of Neuroscience, National Research Council, Pisa, Italy
+K.C. Brennan	media/brennan.jpeg	Department of Neurology, University of Utah School of Medicine, Salt Lake City, UT
+Joerg Striessnig	media/striess.jpeg	Department of Pharmacy University of Innsbruck, Austria
+Chinfei Chen	media/chen.png	Department of Neurobiology, Harvard Medical School
+Daniela Pietrobon	media/pb.png	Department of Biomedical Sciences, Universita’ degli studi di Padova
