@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             days.forEach((dayId, index) => {
                 // Create tab button
-                const date = new Date('2026-06-15');
-                date.setDate(15 + index);
+                const date = new Date('2026-01-30');
+                date.setDate(30 + index);
                 const label = date.toLocaleDateString('en', { weekday: 'long', day: 'numeric' });
 
                 const btn = document.createElement('button');
