@@ -219,8 +219,8 @@ h2:after {
 }
 .schedule-item {
     background: white;
-    padding: 22px;
-    margin-bottom: 18px;
+    padding: 2rem;
+    margin-bottom: 1rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     display: flex;
@@ -234,13 +234,13 @@ h2:after {
     font-weight: 700;
     color: rgb(155, 0, 20);
     min-width: 130px;
-    font-size: 17px;
+    font-size: 1rem;
 }
 .event-details {
     flex: 1;
-    padding-left: 25px;
+    padding: 0 0 0 2rem;
     border-left: 3px solid rgb(155, 0, 20);
-    font-size: 16px;
+    font-size: 1.1rem;
 }
 
 /* Venue */
@@ -256,7 +256,7 @@ h2:after {
 }
 .venue > div {
     flex: 1;
-    min-width: 300px;
+    /*min-width: 300px;*/
 }
 .venue-img img {
     width: 100%;
@@ -294,17 +294,11 @@ footer a {
 }
 
 /* Mobile adjustments */
-@media (max-width: 768px) {
-    .tabs {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
+@media (max-width: 40rem) {
+    .container {
+        padding: 0 2rem;
     }
-    nav ul {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
-    }
+
     .header-layout {
         flex-direction: column;
         text-align: center;
@@ -318,17 +312,51 @@ footer a {
         /*animation: scroll 1s linear infinite; /* Matches JS */
         display: flex;
         justify-content: flex-start;
-        margin: 2rem 5rem;
+        margin: 2rem 1rem;
         flex-direction: row;
         flex-wrap: nowrap;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
     }
+
     header .logo {
         min-height: 8rem;
         float: none;
     }
 
+    nav ul {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        display: flex;
+    }
+
+    .tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        scroll-snap-type: x mandatory;
+    }
+
+    .schedule-item {
+        flex-direction: column;
+    }
+
+    .time {
+        text-align: center;
+        padding: 0 0 .8rem 0;
+    }
+
+    .event-details {
+        border-top: 3px solid rgb(155, 0, 20);
+        border-left: none;
+        padding: 1rem 0 0 0;
+        text-align: center;
+    }
+
+    .venue{
+        flex-direction: column;
+    }
     .sponsors {
         flex-direction: column;
         align-items: center;
